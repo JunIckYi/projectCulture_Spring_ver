@@ -89,9 +89,9 @@
                     <nav class="nav">
                         <ul class="clearfix">
                             <li><a href="#">영화</a></li>
-                            <li><a href="#">연극</a></li>
-                            <li><a href="#">영화관</a></li>
-                            <li><a href="#">오시는길</a></li>
+                            <li><a href="#">뮤지컬</a></li>
+<!--                             <li><a href="#">영화관</a></li> -->
+<!--                             <li><a href="#">오시는길</a></li> -->
                             <li><a href="#">게시판</a></li>
                             <li><a href="#">로그인</a></li>
                             <li><a href="#">회원가입</a></li>
@@ -117,11 +117,11 @@
                         </ul>
                     </div>
                     <div class="bm_right">
-                        <ul>
-                            <li class="line"><a href="custom/faq.html">고객센터</a></li>
-                            <li class="line"><a href="#">테스트</a></li>
-                            <li><a href="#">VIP</a></li>
-                        </ul>
+<!--                         <ul> -->
+<!--                             <li class="line"><a href="custom/faq.html">고객센터</a></li> -->
+<!--                             <li class="line"><a href="#">테스트</a></li> -->
+<!--                             <li><a href="#">VIP</a></li> -->
+<!--                         </ul> -->
                         <ul>
 <!--                             <li class="white"><a href="#">상영시간표</a></li> -->
 <!--                             <li class="purple"><a href="#">빠른예매</a></li> -->
@@ -136,24 +136,24 @@
                     <div class="swiper-slide ss1">
                         <div class="container">
                             <div class="row">
-                                <h2>캡틴 마블 <em>dsadas Marve23l</em></h2>
-                                <p>새로운 히어로, 어벤져스의 희망</p>
+                                <h2>더 플래시<em>The Flash</em></h2>
+                                <p>차원이 다른 히어로가 온다!</p>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide ss2">
                         <div class="container">
                             <div class="row">
-                                <h2>캡틴 마블 <em>11Captain Marvel</em></h2>
-                                <p>새로운 히어로, 어벤져스의 희망</p>
+                                <h2>엘리멘탈 <em>Elemental</em></h2>
+                                <p>불, 물, 공기, 흙 4개의 원소들이 살고 있는 엘리멘트 시티</p>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide ss3">
                         <div class="container">
                             <div class="row">
-                                <h2>캡틴 마블 <em>Captain Marvel</em></h2>
-                                <p>새로운 히어로, 어벤져스의 희망</p>
+                                <h2>트랜스포머: 비스트의 서막 <em>Transformers: Rise of the Beasts</em></h2>
+                                <p>모두의 운명을 건 그들의 압도적 전투가 시작된다!</p>
                             </div>
                         </div>
                     </div>
