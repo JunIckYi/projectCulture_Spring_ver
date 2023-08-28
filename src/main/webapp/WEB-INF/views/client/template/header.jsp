@@ -4,6 +4,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 
+
+	<c:set var="clientUri" value='${requestScope["javax.servlet.forward.request_uri"]}' />
  	<div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -16,8 +18,11 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/board/boardList">게시판</a></li>
+            <li <c:if test="${clientUri eq '/'}">class="active"</c:if>><a href="/">Home</a></li>
+            <li <c:if test="${fn:containsIgnoreCase(clientUri, '/board')}">class="active"</c:if>>
+            	<a href="/board/boardList">게시판</a>
+            </li>
+<!--             <li><a href="/board/boardList">게시판</a></li> -->
 <!--             <li><a href="#contact">Contact</a></li> -->
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>

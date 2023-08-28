@@ -12,7 +12,6 @@ import lombok.Setter;
 
 @Service
 public class BoardServiceImpl implements BoardService {
-	
 	@Setter(onMethod_ = @Autowired)
 	private BoardDAO boardDAO;
 	
@@ -21,6 +20,7 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> boardList(){
 		List<BoardVO> list = null;
 		list = boardDAO.boardList();
+		
 		return list;
 	}
 	
@@ -32,4 +32,47 @@ public class BoardServiceImpl implements BoardService {
 		
 		return result;
 	}
+	
+	@Override
+	public BoardVO boardDetail(BoardVO bvo) {
+		boardDAO.readCntUpdate(bvo); // 조회수 증가 메서드 서비스에서 명시할 필요가 없음
+		
+		BoardVO detail = boardDAO.boardDetail(bvo);
+		if(detail !=null) {
+			detail.setB_content(detail.getB_content().toString().replaceAll("\n", "<br/>"));
+			
+		}
+		
+		return detail;
+	}
+	
+	@Override
+	public int pwdConfirm(BoardVO bvo) {
+		int result = 0;
+		result = boardDAO.pwdConfirm(bvo);
+		return result;
+	}
+	
+	public BoardVO updateForm(BoardVO bvo) {
+		BoardVO updateData = null;
+		updateData = boardDAO.boardDetail(bvo);
+		return updateData;
+	}
+	
+	public int boardUpdate(BoardVO bvo) {
+		int result = 0 ;
+		
+		result = boardDAO.boardUpdate(bvo);
+		
+		return result;
+	}
+	
+	 public int boardDelete(BoardVO bvo) {
+		 
+		int result =  boardDAO.boardDelete(bvo);
+		
+		return result;
+	 }
+	
+
 }
