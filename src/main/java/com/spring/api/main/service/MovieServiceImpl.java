@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring.api.main.vo.MovieVO;
 
-import lombok.extern.slf4j.Slf4j;
+
 
 @Service
 public class MovieServiceImpl implements MovieService{
@@ -33,7 +33,7 @@ public class MovieServiceImpl implements MovieService{
 		try {
 			JsonNode rootNode = objectMapper.readTree(responseBody);
             JsonNode results = rootNode.path("results");
-
+           
             for (JsonNode node : results) {
             	MovieVO movieVO = new MovieVO();
             	
@@ -60,6 +60,7 @@ public class MovieServiceImpl implements MovieService{
                 movieVO.setVote_average(vote_average);
                 movieVO.setVote_count(Integer.parseInt(vote_count));
                 data.add(movieVO);
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,7 +80,8 @@ public class MovieServiceImpl implements MovieService{
 		try {
 			JsonNode rootNode = objectMapper.readTree(responseBody);
             JsonNode results = rootNode.path("results");
-
+            
+            int i = 1;
             for (JsonNode node : results) {
             	MovieVO movieVO = new MovieVO();
             	
@@ -105,7 +107,10 @@ public class MovieServiceImpl implements MovieService{
                 movieVO.setId(id);
                 movieVO.setVote_average(vote_average);
                 movieVO.setVote_count(Integer.parseInt(vote_count));
+                movieVO.setRank(i);
+                
                 data.add(movieVO);
+                i++;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -116,7 +121,7 @@ public class MovieServiceImpl implements MovieService{
 	
 	public List<MovieVO> getUpcomingMovies() {
 		int page=1;
-		String url = "https://api.themoviedb.org/3/movie/upcoming?api_key=" + API_KEY +"&language=ko-KO&watch_region=kr&page="+page;
+		String url = "https://api.themoviedb.org/3/movie/upcoming?api_key=" + API_KEY +"&language=ko-KO&region=kr&page="+page;
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 		String responseBody = response.getBody();
 		
@@ -182,7 +187,7 @@ public class MovieServiceImpl implements MovieService{
 	}
 	
 	public List<MovieVO>  searchMovie(String searchTitle) { /*primary_release_year=2023&*/
-		String url = "https://api.themoviedb.org/3/search/movie?api_key=2f086445ca13875b5bf9a9f2fb2bfa36&language=ko-KO&include_adult=true&region=kr&query="+searchTitle;
+		String url = "https://api.themoviedb.org/3/search/movie?api_key=2f086445ca13875b5bf9a9f2fb2bfa36&language=ko-KO&include_adult=false&region=kr&query="+searchTitle;
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 		String responseBody = response.getBody();
 		

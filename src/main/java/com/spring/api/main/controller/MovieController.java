@@ -32,6 +32,7 @@ public class MovieController {
 		model.addAttribute("movies",movies);
 		model.addAttribute("popular",popular);
 		model.addAttribute("upcoming",upcoming);
+
 		return "index";
 	}
 	

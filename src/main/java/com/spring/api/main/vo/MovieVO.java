@@ -17,5 +17,6 @@ public class MovieVO {
 	private String title;
 	private String vote_average;
 	private int vote_count;
+	private int rank;
 	
 }

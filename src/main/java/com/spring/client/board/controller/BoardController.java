@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.spring.client.board.service.BoardService;
 import com.spring.client.board.vo.BoardVO;
 
-import lombok.Data;
+
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 

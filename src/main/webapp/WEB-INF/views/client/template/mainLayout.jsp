@@ -83,9 +83,9 @@
   <body>
 
     <!-- Fixed navbar -->
-<!--     <nav class="navbar navbar-default navbar-fixed-top"> -->
-<%-- 		<tiles:insertAttribute name="header" /> --%>
-<!--     </nav> -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+		<tiles:insertAttribute name="header" />
+    </nav>
 <script type="text/javascript">
 
 
@@ -119,6 +119,7 @@
                             <li><a href="/board/boardList">게시판</a></li>
                             <li><a href="#">로그인</a></li>
                             <li><a href="#">회원가입</a></li>
+                            <li><a href="#" onclick="event.preventDefault(); requestPay();">결제하기</a>
                         </ul>
                     </nav>    
                 </div>
@@ -170,8 +171,8 @@
                     <div class="swiper-slide ss2">
                         <div class="container">
                             <div class="row">
-                                <h2>엘리멘탈 <em>Elemental</em></h2>
-                                <p>불, 물, 공기, 흙 4개의 원소들이 살고 있는 엘리멘트 시티</p>
+                                <h2>오펜하이머 <em>Oppenheimer</em></h2>
+                                <p>세상을 구하기 위해 세상을 파괴할 지도 모르는 선택을 해야 하는 천재 과학자의 핵개발 프로젝트.</p>
                             </div>
                         </div>
                     </div>
@@ -191,18 +192,28 @@
         </div>
     </section>
     <!-- //검색바 -->
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-	     	<form id="search" name="search"  class="d-flex">
-				<input type="text" class="form-control" id="title1" name="title1" />
-				<button type="button" class="btn btn-outline-success" id="searchBtn" name="searchBtn">검색</button>
-			</form>
-   		 </div>
-    </nav>
-    
-    <form id="detail" name="detail" >
-		<input type="hidden" id="id" name="id" />
-	</form>
+<!--    <nav class="navbar navbar-light bg-light"> -->
+<!--        <div class="container-fluid"> -->
+<!--      	<form id="search" name="search"  class="d-flex"> -->
+<!-- 			<input type="text" class="form-control" id="title1" name="title1" /> -->
+<!-- 			<button type="button" class="btn btn-outline-success" id="searchBtn" name="searchBtn">검색</button> -->
+<!-- 		</form> -->
+<!--   		 </div> -->
+<!--    </nav> -->
+   
+<!--    <form id="detail" name="detail" > -->
+<!-- 	<input type="hidden" id="id" name="id" /> -->
+<!--   </form> -->
+	<div class="search1">
+		<div class="searchBar">
+<!-- 		class="d-flex" -->
+		   <form id="search" name="search"  >  
+			  <input type="text" placeholder="영화를 검색하세요." class="searchBarInput" name="title1" value="오펜하이머"/>
+			  <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" id="searchBtn" name="searchBtn" class="searchBarImg">
+		  </form>
+		</div>
+	</div>
+
 
 <!-- 	<form id="search" name="search" > -->
 <!-- 		<input type="text" id="title" name="title" /> -->
@@ -233,7 +244,7 @@
 					                        <figure>
 					                            <img src="<c:out value='http://image.tmdb.org/t/p/w400${moviepop.poster_path}'/>" srcset="<c:out value='http://image.tmdb.org/t/p/w400${moviepop.poster_path} 2x'/>" alt="<c:out value='${moviepop.title}'/>" >
 					                        </figure>
-<%-- 					                        <div class="rank"><strong><c:out value='${movie.rank}' /></strong></div> --%>
+					                        <div class="rank"><strong><c:out value='${moviepop.rank}' /></strong></div>
 					                        <div class="mx">
 					                            <span class="icon m ir_pm">MX</span>
 					                            <span class="icon b ir_pm">Boutique</span>
@@ -242,7 +253,8 @@
 					                    </div>
 					                    <div class="infor">
 					                        <h3>
-					                            <span class="icon all ir_pm">전체관람가</span> <strong><c:out value='${moviepop.title}'/></strong>
+<!-- 					                            <span class="icon all ir_pm">전체관람가</span>  -->
+					                            <strong><c:out value='${moviepop.title}'/></strong>
 					                        </h3>
 					                        <div class="infor_btn">
 					                        
@@ -272,7 +284,8 @@
 					                    </div>
 					                    <div class="infor">
 					                        <h3>
-					                            <span class="icon all ir_pm">전체관람가</span> <strong><c:out value='${movie.title}'/></strong>
+<!-- 					                            <span class="icon all ir_pm">전체관람가</span>  -->
+					                            <strong><c:out value='${movie.title}'/></strong>
 					                        </h3>
 					                        <div class="infor_btn">
 					                        
@@ -294,7 +307,7 @@
 					                        <figure>
 					                            <img src="<c:out value='http://image.tmdb.org/t/p/w400${movieup.poster_path}'/>" srcset="<c:out value='http://image.tmdb.org/t/p/w400${movieup.poster_path} 2x'/>" alt="<c:out value='${movieup.title}'/>" >
 					                        </figure>
-<%-- 					                        <div class="rank"><strong><c:out value='${movie.rank}' /></strong></div> --%>
+<%-- 					                        <div class="rank"><strong><c:out value='${loop.index + 1}' /></strong></div> --%>
 					                        <div class="mx">
 					                            <span class="icon m ir_pm">MX</span>
 					                            <span class="icon b ir_pm">Boutique</span>
@@ -303,7 +316,8 @@
 					                    </div>
 					                    <div class="infor">
 					                        <h3>
-					                            <span class="icon all ir_pm">전체관람가</span> <strong><c:out value='${movieup.title}'/></strong>
+<!-- 					                            <span class="icon all ir_pm">전체관람가</span>  -->
+					                            <strong><c:out value='${movieup.title}'/></strong>
 					                        </h3>
 					                        <div class="infor_btn">
 					                        
@@ -363,6 +377,7 @@
     <script src="/resources/assets/js/modernizr-custom.js"></script>
     <script src="/resources/assets/js/ie-checker.js"></script>
     <script src="/resources/assets/js/swiper.min.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
     <script>
         //배너 이미지 슬라이드
         var swiper = new Swiper('.swiper-container',{
@@ -424,6 +439,49 @@
             movCont.eq(index).css("display","block");
         });
     </script>
+     
+       
+     <script>
+        var IMP = window.IMP; 
+        IMP.init("imp15631721"); 
+      
+        var today = new Date();   
+        var hours = today.getHours(); // 시
+        var minutes = today.getMinutes();  // 분
+        var seconds = today.getSeconds();  // 초
+        var milliseconds = today.getMilliseconds();
+        var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+        
+
+        function requestPay() {
+            IMP.request_pay({
+                pg : 'kakaopay',
+                pay_method : 'card',
+                merchant_uid: "IMP"+makeMerchantUid, 
+                name : '문화빛길',
+                amount : 100,
+                buyer_email : 'Iamport@chai.finance',
+                buyer_name : '문화빛길',
+                buyer_tel : '010-1234-5678',
+                buyer_addr : '서울특별시 강남구 삼성동',
+                buyer_postcode : '123-456'
+            }, function (rsp) { // callback
+                if (rsp.success) {
+                    console.log(rsp);
+                } else {
+                    console.log(rsp);
+                }
+            });
+        }
+    </script>
+    
+    <script type="text/javascript">
+    	$(function(){
+    		$("#home").attr({class : "active"});
+    	})
+    </script>
+     
+     
      
      
      
