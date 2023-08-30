@@ -1,107 +1,626 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<%@ include file="/WEB-INF/views/client/common/common.jspf" %>
 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>문화빛길 관리자 페이지</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources/plugins/images/favicon.png">
+    <!-- Custom CSS -->
+   <link href="/resources/css/style.min.css" rel="stylesheet">
 
-    <title>Signin Template for Bootstrap</title>
+		<script type="text/javascript">
+		
+		</script>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/resources/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="/resources/dist/css/signin.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-   	<link rel="shortcut icon" href="/resources/image/icon1.png" />
-	<link rel="apple-touch-icon" href="/resources/image/icon1.png" />
-
-	<!--[if lt IE 9]>
-		<script src="../js/html5shiv.js"></script>
-	<![endif]-->
-
+	   
+    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="/resourcesimage/png" sizes="16x16" href="/plugins/images/favicon.png">
+    <!-- Custom CSS -->
+    <link href="/resources/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
+    <!-- Custom CSS -->
+    <link href="/resources/css/style.min.css" rel="stylesheet">
 	
-	<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap-theme.css" />
 	
-	<script type="text/javascript" src="/resources/dist/js/jquery-3.7.0.min.js"></script>
-	<script type="text/javascript" src="/resources/dist/js/common.js"></script>
-	<script type="text/javascript" src="/resources/dist/js/bootstrap.min.js"></script>
 
 	<script type="text/javascript">
-	$(function(){
-			let errorMsg = "${errorMsg}";
-			if(errorMsg!=""){
-				alert(errorMsg);
-				errorMsg = "";
-			}
-		
-		
-		  $("#loginBtn").click(function(){
-			  if(!chkData("#a_id", "아이디를")) return;
-			  else if(!chkData("#a_pwd", "비밀번호를")) return;
-			  else{
-			     $("#loginForm").attr({
-			    	 "method":"post",
-			    	 "action":"/admin/login"
-			     });
-                 $("#loginForm").submit();
-				  
-			  }
-			  
-		  });
-		  
-		  $("#logOutBtn").click(function(){
-			  location.href = "/admin/logout"
-			  
-		  });
-		  
-	});  
+
 	</script>
+
+	
+	
   </head>
 
   <body>
 
-    <div class="container">
-      <c:if test="${empty adminLogin}">
-      	 <form class="form-signin" id="loginForm">
-	    	<a><img src="/resources/image/cultureLogo.jpg" width="300"></a>
-	         <h2 class="form-signin-heading">관리자 로그인</h2>
-         <label for="a_id" class="sr-only">아이디</label> 
-         <input type="text" name = "a_id" id="a_id" class="form-control" placeholder="아이디"> 
+<!--     <div class="container"> -->
+<%--       <c:if test="${empty adminLogin}"> --%>
+<!--       	 <form class="form-signin" id="loginForm"> -->
+<!-- 	    	<a><img src="/resources/image/cultureLogo.jpg" width="300"></a> -->
+<!-- 	         <h2 class="form-signin-heading">관리자 로그인</h2> -->
+<!--          <label for="a_id" class="sr-only">아이디</label>  -->
+<!--          <input type="text" name = "a_id" id="a_id" class="form-control" placeholder="아이디">  -->
          
-         <label for="a_pwd" class="sr-only">비밀번호</label> 
-         <input type="password" name = "a_pwd" id="a_pwd" class="form-control" placeholder="비밀번호">
-         <button class="btn btn-lg btn-primary btn-block" type="button" id="loginBtn">로그인</button>
-      </form>
-      </c:if>
-      <c:if test = "${not empty adminLogin}">
-         <h3>${adminLogin.a_name} 님 환영합니다.</h3>
-         <br/>
-         <button type = "button" id = "logOutBtn">로그아웃</button>
-      </c:if> 
-   </div>
+<!--          <label for="a_pwd" class="sr-only">비밀번호</label>  -->
+<!--          <input type="password" name = "a_pwd" id="a_pwd" class="form-control" placeholder="비밀번호"> -->
+<!--          <button class="btn btn-lg btn-primary btn-block" type="button" id="loginBtn">로그인</button> -->
+<!--       </form> -->
+<%--       </c:if> --%>
+<%--       <c:if test = "${not empty adminLogin}"> --%>
+<%--          <h3>${adminLogin.a_name} 님 환영합니다.</h3> --%>
+<!--          <br/> -->
+<!--          <button type = "button" id = "logOutBtn">로그아웃</button> -->
+<%--       </c:if>  --%>
+<!--    </div> -->
    <!-- /container -->
+     <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" data-navbarbg="skin5">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header" data-logobg="skin6">
+<!--                     ============================================================== -->
+<!--                     Logo -->
+<!--                     ============================================================== -->
+                    <a class="navbar-brand" href="dashboard.html">
+<!--                         Logo icon -->
+                        <b class="logo-icon">
+<!--                             Dark Logo icon -->
+<!--                             <img src="/resources/plugins/images/logo-icon.png" alt="homepage" />  -->
+                        </b>
+<!--                         End Logo icon -->
+<!--                         Logo text -->
+                        <span class="logo-text">
+<!--                             dark Logo text -->
+<!--                              <img src="/resources/plugins/images/logo-text.png" alt="homepage" />   -->
+                        </span>
+                    </a>
+<!--                     ============================================================== -->
+<!--                     End Logo -->
+<!--                     ============================================================== -->
+<!--                     ============================================================== -->
+<!--                     toggle and nav items -->
+<!--                     ============================================================== -->
+                    <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
+                        href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                </div>
+<!--                 ============================================================== -->
+<!--                 End Logo -->
+<!--                 ============================================================== -->
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                   
+<!--                     ============================================================== -->
+<!--                     Right side toggle and nav items -->
+<!--                     ============================================================== -->
+                    <ul class="navbar-nav ms-auto d-flex align-items-center">
+
+<!--                         ============================================================== -->
+<!--                         Search -->
+<!--                         ============================================================== -->
+                        <li class=" in">
+                            <form role="search" class="app-search d-none d-md-block me-3">
+                                <input type="text" placeholder="Search..." class="form-control mt-0">
+                                <a href="" class="active">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </form>
+                        </li>
+<!--                         ============================================================== -->
+<!--                         User profile and search -->
+<!--                         ============================================================== -->
+                        <li>
+                            <a class="profile-pic" href="#">
+                                <img src="/resources/plugins/images/users/varun.jpg" alt="user-img" width="36"
+                                    class="img-circle"><span class="text-white font-medium">Steave</span></a>
+                        </li>
+<!--                         ============================================================== -->
+<!--                         User profile and search -->
+<!--                         ============================================================== -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" data-sidebarbg="skin6">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <!-- User Profile-->
+                        <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/login"
+                                aria-expanded="false">
+                                <i class="far fa-clock" aria-hidden="true"></i>
+                                <span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/mgBoard"
+                                aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">게시판 관리</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
+                                aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">댓글 관리</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="fontawesome.html"
+                                aria-expanded="false">
+                                <i class="fa fa-font" aria-hidden="true"></i>
+                                <span class="hide-menu">회원 관리</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="map-google.html"
+                                aria-expanded="false">
+                                <i class="fa fa-globe" aria-hidden="true"></i>
+                                <span class="hide-menu">공지게시판</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.html"
+                                aria-expanded="false">
+                                <i class="fa fa-columns" aria-hidden="true"></i>
+                                <span class="hide-menu">코멘트관리</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.html"
+                                aria-expanded="false">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                <span class="hide-menu">리포트</span>
+                            </a>
+                        </li>
+<!--                         <li class="text-center p-20 upgrade-btn"> -->
+<!--                             <a href="https://www.wrappixel.com/templates/ampleadmin/" -->
+<!--                                 class="btn d-grid btn-danger text-white" target="_blank"> -->
+<!--                                 Upgrade to Pro</a> -->
+<!--                         </li> -->
+                    </ul>
+
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb bg-white">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">문화빛길</h4>
+                    </div>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        <div class="d-md-flex">
+                            <ol class="breadcrumb ms-auto">
+                                <li><a href="/admin/login" class="fw-normal">Dashboard</a></li>
+                            </ol>
+<!--                             <a href="https://www.wrappixel.com/templates/ampleadmin/" target="_blank" -->
+<!--                                 class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">Upgrade -->
+<!--                                 to Pro</a> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Three charts -->
+                <!-- ============================================================== -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Total Visit</h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text-success">659</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Total Page Views</h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash2"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text-purple">869</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Unique Visitor</h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash3"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text-info">911</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- PRODUCTS YEARLY SALES -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Products Yearly Sales</h3>
+                            <div class="d-md-flex">
+                                <ul class="list-inline d-flex ms-auto">
+                                    <li class="ps-3">
+                                        <h5><i class="fa fa-circle me-1 text-info"></i>Mac</h5>
+                                    </li>
+                                    <li class="ps-3">
+                                        <h5><i class="fa fa-circle me-1 text-inverse"></i>Windows</h5>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="ct-visits" style="height: 405px;">
+                                <div class="chartist-tooltip" style="top: -17px; left: -12px;"><span
+                                        class="chartist-tooltip-value">6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- RECENT SALES -->
+                <!-- ============================================================== -->
+<!--                 <div class="row"> -->
+<!--                     <div class="col-md-12 col-lg-12 col-sm-12"> -->
+<!--                         <div class="white-box"> -->
+<!--                             <div class="d-md-flex mb-3"> -->
+<!--                                 <h3 class="box-title mb-0">Recent sales</h3> -->
+<!--                                 <div class="col-md-3 col-sm-4 col-xs-6 ms-auto"> -->
+<!--                                     <select class="form-select shadow-none row border-top"> -->
+<!--                                         <option>March 2021</option> -->
+<!--                                         <option>April 2021</option> -->
+<!--                                         <option>May 2021</option> -->
+<!--                                         <option>June 2021</option> -->
+<!--                                         <option>July 2021</option> -->
+<!--                                     </select> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                             <div class="table-responsive"> -->
+<!--                                 <table class="table no-wrap"> -->
+<!--                                     <thead> -->
+<!--                                         <tr> -->
+<!--                                             <th class="border-top-0">#</th> -->
+<!--                                             <th class="border-top-0">Name</th> -->
+<!--                                             <th class="border-top-0">Status</th> -->
+<!--                                             <th class="border-top-0">Date</th> -->
+<!--                                             <th class="border-top-0">Price</th> -->
+<!--                                         </tr> -->
+<!--                                     </thead> -->
+<!--                                     <tbody> -->
+<!--                                         <tr> -->
+<!--                                             <td>1</td> -->
+<!--                                             <td class="txt-oflo">Elite admin</td> -->
+<!--                                             <td>SALE</td> -->
+<!--                                             <td class="txt-oflo">April 18, 2021</td> -->
+<!--                                             <td><span class="text-success">$24</span></td> -->
+<!--                                         </tr> -->
+<!--                                         <tr> -->
+<!--                                             <td>2</td> -->
+<!--                                             <td class="txt-oflo">Real Homes WP Theme</td> -->
+<!--                                             <td>EXTENDED</td> -->
+<!--                                             <td class="txt-oflo">April 19, 2021</td> -->
+<!--                                             <td><span class="text-info">$1250</span></td> -->
+<!--                                         </tr> -->
+<!--                                         <tr> -->
+<!--                                             <td>3</td> -->
+<!--                                             <td class="txt-oflo">Ample Admin</td> -->
+<!--                                             <td>EXTENDED</td> -->
+<!--                                             <td class="txt-oflo">April 19, 2021</td> -->
+<!--                                             <td><span class="text-info">$1250</span></td> -->
+<!--                                         </tr> -->
+<!--                                         <tr> -->
+<!--                                             <td>4</td> -->
+<!--                                             <td class="txt-oflo">Medical Pro WP Theme</td> -->
+<!--                                             <td>TAX</td> -->
+<!--                                             <td class="txt-oflo">April 20, 2021</td> -->
+<!--                                             <td><span class="text-danger">-$24</span></td> -->
+<!--                                         </tr> -->
+<!--                                         <tr> -->
+<!--                                             <td>5</td> -->
+<!--                                             <td class="txt-oflo">Hosting press html</td> -->
+<!--                                             <td>SALE</td> -->
+<!--                                             <td class="txt-oflo">April 21, 2021</td> -->
+<!--                                             <td><span class="text-success">$24</span></td> -->
+<!--                                         </tr> -->
+<!--                                         <tr> -->
+<!--                                             <td>6</td> -->
+<!--                                             <td class="txt-oflo">Digital Agency PSD</td> -->
+<!--                                             <td>SALE</td> -->
+<!--                                             <td class="txt-oflo">April 23, 2021</td> -->
+<!--                                             <td><span class="text-danger">-$14</span></td> -->
+<!--                                         </tr> -->
+<!--                                         <tr> -->
+<!--                                             <td>7</td> -->
+<!--                                             <td class="txt-oflo">Helping Hands WP Theme</td> -->
+<!--                                             <td>MEMBER</td> -->
+<!--                                             <td class="txt-oflo">April 22, 2021</td> -->
+<!--                                             <td><span class="text-success">$64</span></td> -->
+<!--                                         </tr> -->
+<!--                                     </tbody> -->
+<!--                                 </table> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+                <!-- ============================================================== -->
+                <!-- Recent Comments -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- .col -->
+                    <div class="col-md-12 col-lg-8 col-sm-12">
+                        <div class="card white-box p-0">
+                            <div class="card-body">
+                                <h3 class="box-title mb-0">Recent Comments</h3>
+                            </div>
+                            <div class="comment-widgets">
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row p-3 mt-0">
+                                    <div class="p-2"><img src="/resources/plugins/images/users/varun.jpg" alt="user" width="50" class="rounded-circle"></div>
+                                    <div class="comment-text ps-2 ps-md-3 w-100">
+                                        <h5 class="font-medium">James Anderson</h5>
+                                        <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only five centuries. </span>
+                                        <div class="comment-footer d-md-flex align-items-center">
+                                             <span class="badge bg-primary rounded">Pending</span>
+                                             
+                                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row p-3">
+                                    <div class="p-2"><img src="/resources/plugins/images/users/genu.jpg" alt="user" width="50" class="rounded-circle"></div>
+                                    <div class="comment-text ps-2 ps-md-3 active w-100">
+                                        <h5 class="font-medium">Michael Jorden</h5>
+                                        <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only five centuries. </span>
+                                        <div class="comment-footer d-md-flex align-items-center">
+
+                                            <span class="badge bg-success rounded">Approved</span>
+                                            
+                                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row p-3">
+                                    <div class="p-2"><img src="/resources/plugins/images/users/ritesh.jpg" alt="user" width="50" class="rounded-circle"></div>
+                                    <div class="comment-text ps-2 ps-md-3 w-100">
+                                        <h5 class="font-medium">Johnathan Doeting</h5>
+                                        <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only five centuries. </span>
+                                        <div class="comment-footer d-md-flex align-items-center">
+
+                                            <span class="badge rounded bg-danger">Rejected</span>
+                                            
+                                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="card white-box p-0">
+                            <div class="card-heading">
+                                <h3 class="box-title mb-0">Chat Listing</h3>
+                            </div>
+                            <div class="card-body">
+                                <ul class="chatonline">
+                                    <li>
+                                        <div class="call-chat">
+                                            <button class="btn btn-success text-white btn-circle btn" type="button">
+                                                <i class="fas fa-phone"></i>
+                                            </button>
+                                            <button class="btn btn-info btn-circle btn" type="button">
+                                                <i class="far fa-comments text-white"></i>
+                                            </button>
+                                        </div>
+                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
+                                                src="/resources/plugins/images/users/varun.jpg" alt="user-img" class="img-circle">
+                                            <div class="ms-2">
+                                                <span class="text-dark">Varun Dhavan <small
+                                                        class="d-block text-success d-block">online</small></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="call-chat">
+                                            <button class="btn btn-success text-white btn-circle btn" type="button">
+                                                <i class="fas fa-phone"></i>
+                                            </button>
+                                            <button class="btn btn-info btn-circle btn" type="button">
+                                                <i class="far fa-comments text-white"></i>
+                                            </button>
+                                        </div>
+                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
+                                                src="/resources/plugins/images/users/genu.jpg" alt="user-img" class="img-circle">
+                                            <div class="ms-2">
+                                                <span class="text-dark">Genelia
+                                                    Deshmukh <small class="d-block text-warning">Away</small></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="call-chat">
+                                            <button class="btn btn-success text-white btn-circle btn" type="button">
+                                                <i class="fas fa-phone"></i>
+                                            </button>
+                                            <button class="btn btn-info btn-circle btn" type="button">
+                                                <i class="far fa-comments text-white"></i>
+                                            </button>
+                                        </div>
+                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
+                                                src="/resources/plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle">
+                                            <div class="ms-2">
+                                                <span class="text-dark">Ritesh
+                                                    Deshmukh <small class="d-block text-danger">Busy</small></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="call-chat">
+                                            <button class="btn btn-success text-white btn-circle btn" type="button">
+                                                <i class="fas fa-phone"></i>
+                                            </button>
+                                            <button class="btn btn-info btn-circle btn" type="button">
+                                                <i class="far fa-comments text-white"></i>
+                                            </button>
+                                        </div>
+                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
+                                                src="/resources/plugins/images/users/arijit.jpg" alt="user-img" class="img-circle">
+                                            <div class="ms-2">
+                                                <span class="text-dark">Arijit
+                                                    Sinh <small class="d-block text-muted">Offline</small></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="call-chat">
+                                            <button class="btn btn-success text-white btn-circle btn" type="button">
+                                                <i class="fas fa-phone"></i>
+                                            </button>
+                                            <button class="btn btn-info btn-circle btn" type="button">
+                                                <i class="far fa-comments text-white"></i>
+                                            </button>
+                                        </div>
+                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
+                                                src="/resources/plugins/images/users/govinda.jpg" alt="user-img"
+                                                class="img-circle">
+                                            <div class="ms-2">
+                                                <span class="text-dark">Govinda
+                                                    Star <small class="d-block text-success">online</small></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="call-chat">
+                                            <button class="btn btn-success text-white btn-circle btn" type="button">
+                                                <i class="fas fa-phone"></i>
+                                            </button>
+                                            <button class="btn btn-info btn-circle btn" type="button">
+                                                <i class="far fa-comments text-white"></i>
+                                            </button>
+                                        </div>
+                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
+                                                src="/resources/plugins/images/users/hritik.jpg" alt="user-img" class="img-circle">
+                                            <div class="ms-2">
+                                                <span class="text-dark">John
+                                                    Abraham<small class="d-block text-success">online</small></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer text-center"> 2021 © Ample Admin brought to you by <a
+                    href="https://www.wrappixel.com/">wrappixel.com</a>
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="/resources/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="/resources/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/resources/js/app-style-switcher.js"></script>
+    <script src="/resources/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <!--Wave Effects -->
+    <script src="/resources/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="/resources/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="/resources/js/custom.js"></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+    <script src="/resources/plugins/bower_components/chartist/dist/chartist.min.js"></script>
+    <script src="/resources/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="/resources/js/pages/dashboards/dashboard1.js"></script>
 
 
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+<!--     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
   </body>
 </html>

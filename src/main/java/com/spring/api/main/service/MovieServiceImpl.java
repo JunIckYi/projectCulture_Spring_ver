@@ -23,7 +23,7 @@ public class MovieServiceImpl implements MovieService{
 	private final String API_KEY = "2f086445ca13875b5bf9a9f2fb2bfa36";
 	
 	public List<MovieVO> getNowPlayingMovies() {
-		int page=1;
+		int page=2;
 		String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=" + API_KEY +"&language=ko-KO&watch_region=kr&page="+page;
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 		String responseBody = response.getBody();

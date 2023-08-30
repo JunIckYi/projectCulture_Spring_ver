@@ -83,9 +83,9 @@
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-		<tiles:insertAttribute name="header" />
-    </nav>
+<!--     <nav class="navbar navbar-default navbar-fixed-top"> -->
+<%-- 		<tiles:insertAttribute name="header" /> --%>
+<!--     </nav> -->
 <script type="text/javascript">
 
 
@@ -96,7 +96,7 @@
      
      
      
-        <header id="header">
+       <header id="header">
         <div class="container">
             <div class="row">
                 <div class="header clearfix">
@@ -119,6 +119,7 @@
                             <li><a href="/board/boardList">게시판</a></li>
                             <li><a href="#">로그인</a></li>
                             <li><a href="#">회원가입</a></li>
+                            <li><a href="/admin/login">관리자</a></li>
                             <li><a href="#" onclick="event.preventDefault(); requestPay();">결제하기</a>
                         </ul>
                     </nav>    
@@ -126,12 +127,12 @@
             </div>
         </div>
     </header>
-    <!-- //header -->
-    
+
+   
  
     
-    
-    <section id="banner">
+   <div id="bgColor" >
+     <section id="banner">
         <div class="banner_menu">
             <h2 class="ir_so">배너 영역</h2>
             <div class="container">
@@ -191,6 +192,8 @@
             </div>
         </div>
     </section>
+  </div>
+   
     <!-- //검색바 -->
 <!--    <nav class="navbar navbar-light bg-light"> -->
 <!--        <div class="container-fluid"> -->

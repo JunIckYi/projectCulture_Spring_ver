@@ -38,7 +38,7 @@ public class AdminLoginController {
 	@GetMapping("/login")
 	public String loginForm() {
 		
-		return "client/admin/main";
+		return "client/admin/loginPage";
 	}
 	
 	/**************************************************************
@@ -62,16 +62,16 @@ public class AdminLoginController {
 	public String loginProcess(AdminLoginVO login, Model model, RedirectAttributes ras) {
 		log.info("loginProcess 호출 성공");
 		AdminLoginVO adminLogin = adminLoginService.loginProcess(login);
-
+		String url="";
 		if(adminLogin != null) {
 			model.addAttribute("adminLogin",adminLogin);
-			// url = "/admin/board/boardList"
+			 url = "/client/admin/main";
 		}else {
 			ras.addFlashAttribute("errorMsg","로그인 실패");
-			// url = "/admin/login"
+			 url = "redirect:/admin/login";
 		}
 		
-		return "redirect:/admin/login";
+		return url;
 	}
 	
    @RequestMapping("/logout")
@@ -80,7 +80,42 @@ public class AdminLoginController {
       sessionStatus.setComplete();
       return "redirect:/admin/login";
    }
+   
+	@GetMapping("/mgBoard")
+	public String mgBoard() {
+		
+		return "client/admin/basic-board";
+	}
+	
+	@GetMapping("/mgReply")
+	public String mgReply() {
+		
+		return "client/admin/main";
+	}
 
+	@GetMapping("/manageUser")
+	public String manageUser() {
+		
+		return "client/admin/main";
+	}
+	
+	@GetMapping("/mgNotice")
+	public String mgNotice() {
+		
+		return "client/admin/main";
+	}
+	
+	@GetMapping("/mgConmment")
+	public String mgConmment() {
+		
+		return "client/admin/main";
+	}
+	
+
+	
+	
+	
+	
 	
 
 
